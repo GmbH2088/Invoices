@@ -18,6 +18,6 @@ public class Record
     //prints record at request
     public void printRecord()
     {
-        System.out.println(product + " " + amount + " " + price);
+        System.out.printf(product + " " + amount + " " + "%.2f\n", price);
     }
 }
