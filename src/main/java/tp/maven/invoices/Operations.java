@@ -2,31 +2,31 @@ package tp.maven.invoices;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+//Performs operations on Invoices as requested by App
+//GRASP Indirection, Controller
 public class Operations
 {
-    static Scanner newScan = new Scanner(System.in);
-    private static final List<Invoice> invoices= new ArrayList<>();
-    static int listindex = 1;
+    static List<Invoice> invoices = new ArrayList<>();   //Stores invoices
+    private static int listindex = 1;   //auto increments to use as next invoices index
 
-    public static void add()
+    //Creates new Invoice and adds items to it
+    //GRASP Creator
+    public static void add(final String customer)
     {
-        System.out.println("Input customer:");
-        String customer = newScan.nextLine();
-        Invoice invoice = new Invoice(listindex, customer);
-        invoices.add(invoice);
-        listindex = listindex + 1;
+        Invoice invoice = new Invoice(listindex, customer); //create new invoice
+        invoice.add();  //add records to it
+        invoices.add(invoice);  //add new invoice to the list
+        listindex = listindex + 1;  //increment index for next invoice
     }
 
-    public static void view()
+    //used to print contents of a specific customers invoices
+    //GRASP information expert
+    public static void view(final String customer)
     {
-        System.out.println("Input customer:");
-        String customer = newScan.nextLine();
-
-        for(Invoice invoice: invoices)
+        for (Invoice invoice: invoices)
         {
-            if(customer.equals(invoice.return_customer())) { invoice.print_invoice(); }
+            if (customer.equals(invoice.returnCustomer())) { invoice.printInvoice(); }
         }
     }
 }

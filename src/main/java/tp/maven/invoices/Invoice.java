@@ -4,27 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//class representing invoice
+//GRASP Creator
 public class Invoice
 {
-    int index;
-    String customer;
-    private final List<Record> records = new ArrayList<>();
+    private final int index;  //stores index
+    private final String customer;    //stores customer name
+    private final List<Record> records = new ArrayList<>(); //stores records in invoice
 
-
-    public Invoice(int index, String client)
+    //sets fields for new invoice
+    public Invoice(final int i, final String client)
     {
-        this.index=index;
-        this.customer=client;
-
-        add();
-
-        print_invoice();
+        this.index = i;
+        this.customer = client;
     }
 
+    //creates records for invoice
     public void add()
     {
-        boolean ending=false;
-        while (!ending)
+        boolean ending = false;   //flag to finish adding records
+        while (!ending) //loop for adding records
         {
             Scanner myScan = new Scanner(System.in);
 
@@ -40,19 +39,22 @@ public class Invoice
 
             System.out.println("Type 'end' to finish adding products.");
             String toEnd = myScan.nextLine();
-            if(toEnd.equals("end")) { ending=true; }
+            if (toEnd.equals("end")) { ending = true; }
         }
     }
 
-    public String return_customer()
+    //used to return customer for purposes of finding invoices by their customer
+    public String returnCustomer()
     {
         return customer;
     }
 
-    public void print_invoice()
+    //used to print records from this invoice
+    //GRASP Information expert
+    public void printInvoice()
     {
         System.out.println("Invoice no " + index + " for customer " + customer);
-        for(Record record: this.records) { record.print_record(); }
+        for (Record record: this.records) { record.printRecord(); }
         System.out.print("\n");
     }
 

@@ -1,19 +1,22 @@
 package tp.maven.invoices;
 
+//Stores item in invoice
 public class Record
 {
-    private final String product;
-    private final int amount;
-    private final float price;
+    private final String product;   //product name
+    private final int amount;   //amount of product
+    private final float price;  //price per unit
 
-    public Record(String product, int amount, float price)
+    //sets the fields for Record
+    public Record(final String pro, final int a, final float prc)
     {
-        this.product=product;
-        this.amount=amount;
-        this.price=price;
+        this.product = pro;
+        this.amount = a;
+        this.price = prc;
     }
 
-    public void print_record()
+    //prints record at request
+    public void printRecord()
     {
         System.out.println(product + " " + amount + " " + price);
     }
